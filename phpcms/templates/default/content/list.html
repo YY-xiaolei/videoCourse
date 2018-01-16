@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>列表页</title>
+	<link rel="stylesheet" href="{CSS_PATH}self/base.css">
+	<link rel="stylesheet" href="{CSS_PATH}self/list.css">
+	<link rel="stylesheet" href="{CSS_PATH}iconFont/iconfont.css">
+	<link rel="stylesheet" href="{CSS_PATH}self/swerp.css">
+	<script src="{JS_PATH}self/rems.js"></script>
+</head>
+<body id="course-list">
+   
+    {if $catid==12}
+	<header  style="background-color: #7BBFF0">
+	{elseif $catid==13}
+	<header  style="background-color: #F791C3">
+	{elseif $catid==14}
+	<header  style="background-color: #73AEDB">
+	{elseif $catid==15}
+	<header  style="background-color: #ACDB78">
+	{elseif $catid==16}
+	<header  style="background-color: #E65E5B">
+	{elseif $catid==17}
+	<header  style="background-color: #23CFF3">
+	{elseif $catid==24}
+	<header  style="background-color: #4A94DB">
+	{elseif $catid==25}
+	<header  style="background-color: #00B75A">
+	{else}
+	<header  style="background-color: #00C5C6">
+	{/if}
+
+
+
+	<!-- <header  style="background-color: #F791C3"> -->
+		<a href="" class="iconfont icon-arrowleft2 backTo" onClick="javascript :history.go(-1);"></a>
+        {if $catid==12}
+		<h1><img src="{$CATEGORYS[12][image]}" alt=""></h1>
+		{elseif $catid==13}
+		<h1><img src="{$CATEGORYS[13][image]}" alt=""></h1>
+		{elseif $catid==14}
+		<h1><img src="{$CATEGORYS[14][image]}" alt=""></h1>
+		{elseif $catid==15}
+		<h1><img src="{$CATEGORYS[15][image]}" alt=""></h1>
+		{elseif $catid==16}
+		<h1><img src="{$CATEGORYS[16][image]}" alt=""></h1>
+		{elseif $catid==17}
+		<h1><img src="{$CATEGORYS[17][image]}" alt=""></h1>
+		{elseif $catid==24}
+		<h1><img src="{$CATEGORYS[24][image]}" alt=""></h1>
+		{elseif $catid==25}
+		<h1><img src="{$CATEGORYS[25][image]}" alt=""></h1>
+		{else}
+		<h1><img src="{$CATEGORYS[26][image]}" alt=""></h1>
+		{/if}
+
+
+		<h3>
+			{if $catid==12} {$CATEGORYS[12][catname]} 
+			{elseif $catid==13} {$CATEGORYS[13][catname]} 
+            {elseif $catid==14} {$CATEGORYS[14][catname]} 
+            {elseif $catid==15} {$CATEGORYS[15][catname]} 
+            {elseif $catid==16} {$CATEGORYS[16][catname]}
+            {elseif $catid==17} {$CATEGORYS[17][catname]}
+            {elseif $catid==24} {$CATEGORYS[24][catname]} 
+            {elseif $catid==25} {$CATEGORYS[25][catname]} 
+            {else} {$CATEGORYS[26][catname]} {/if}
+		</h3>
+		<nav class="navs">
+			<ul>
+				<li class="navs-active">全部</li>
+				<li>基础</li>
+				<li>案例</li>
+
+			</ul>
+		</nav>
+	</header>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<main class="swiper-slide">
+				<!-- 每个课程开始 -->
+				{pc:content  action="lists" catid="$catid" siteid="$siteid" num="100" order="listorder ASC" moreinfo="1"}
+                {loop $data $v}
+                <!-- {var_dump($data)} -->
+				<div class="middle">
+
+					<a href="{$v[url]}">
+						<div class="middle-left">
+							<img src="{$v[poster]}" alt="">
+						</div>	
+						<div class="middle-right">
+							<h3>{$v[title]}</h3>
+							<div class="degree">等级难度<span>{$v[dengji]}</span></div>
+						</div>
+					</a>
+				</div>
+				{/loop}
+                {/pc}
+				<!-- 每个课程结束 -->
+			</main>
+
+			<main class="swiper-slide">
+				<!-- 每个课程开始 -->
+				{pc:content  action="lists" catid="$catid" siteid="$siteid" num="100" order="listorder ASC" moreinfo="1"}
+                {loop $data $v}
+				<div class="middle">
+					<a href="{$v[url]}">
+						<div class="middle-left">
+							<img src="{$v[poster]}" alt="">
+						</div>	
+						<div class="middle-right">
+							<h3>{$v[title]}</h3>
+							<div class="degree">等级难度<span>{$v[dengji]}</span></div>
+						</div>
+					</a>
+				</div>
+				{/loop}
+                {/pc}
+				<!-- 每个课程结束 -->
+			</main>
+
+			<main class="swiper-slide">
+				<!-- 每个课程开始 -->
+                {pc:content  action="lists" catid="$catid" siteid="$siteid" num="100" order="listorder ASC" moreinfo="1"}
+                {loop $data $v}
+				<div class="middle">
+					<a href="{$v[url]}">
+						<div class="middle-left">
+							<img src="{$v[poster]}" alt="">
+						</div>	
+						<div class="middle-right">
+							<h3>{$v[title]}</h3>
+							<div class="degree">等级难度<span>{$v[dengji]}</span></div>
+						</div>
+					</a>
+				</div>
+				{/loop}
+                {/pc}
+				<!-- 每个课程结束 -->
+			</main>
+		</div>
+	</div>
+	
+</body>
+<script src="{JS_PATH}self/jquery-1.10.1.min.js"></script>
+<script src="{JS_PATH}self/idangerous.swiper.min.js"></script>
+<script>
+  var tabsSwiper = new Swiper('.swiper-container',{
+    onlyExternal : true,
+    speed:500
+  })
+  $(".navs li").on('touchstart mousedown',function(e){
+    e.preventDefault()
+    $(".navs .navs-active").removeClass('navs-active')
+    $(this).addClass('navs-active')
+    tabsSwiper.swipeTo( $(this).index() )
+  })
+  $(".navs li").click(function(e){
+    e.preventDefault()
+  })
+  </script>
+</html>
